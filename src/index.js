@@ -4,10 +4,31 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+function formatName(user) {
+  return  user.firstName  + ' ' + user.lastName;
+}
+
+const user  = {
+  firstName   : 'Harper',
+  lastName    : 'Perez'
+};
+
+const element = (
+
+  <div>
+    <label>Name:</label>
+    <input type="text" placeholder="Enter Name" id="name" name="name"/>
+    <br />
+    <label>Age:</label>
+    <input type="number" placeholder="Enter Age" id="age" name="age"/>
+    <br />
+    <label>Gender:</label>
+    <input  type="text" placeholder="Enter gender" id="gender" name="gender" />
+  </div>
+);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  element,
   document.getElementById('root')
 );
 
