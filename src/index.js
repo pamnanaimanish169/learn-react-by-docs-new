@@ -4,30 +4,50 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const currentTime = new Date();
-const futureDate  = new Date(2021,8,3,17);
-const timeRemaining = Math.abs((currentTime - futureDate)).toString();
+function  formatDate(date)  {
+  return  date.toLocaleDateString();
+}
 
-const element = (
+function  Comment(props)  {
+  return  (
+    <div  className="Comment">
+      <div  className="UserInfo">
+        <img 
+        className="Avatar"
+        src={props.author.avatarUrl}
+        alt={props.author.name}
+        />
+        <div  className="UserInfo-name">
+          {props.author.name}
+        </div>
+      </div>
 
-  <div>
-    <h1>Current time is {currentTime.toString()}</h1>
+      <div  className="Comment-text">
+        {props.text}
+      </div>
+      <div  className="Comment-date">
+        {formatDate(props.date)}
+      </div>
+    </div>
+  );
+}
 
-    <h1>Future date is {futureDate.toString()}</h1>
-
-    <h1>Difference is {( (currentTime - futureDate).toString() )} in milliseconds</h1>
-
-    <h1>{Math.ceil(timeRemaining  / 1000) } in seconds</h1>
-
-    <h1>{ Math.ceil(timeRemaining  / (1000 * 60))} in minutes</h1>
-
-    <h1>{ Math.ceil(timeRemaining  / (1000 * 60 * 60) )} in hours</h1>
-    
-  </div>
-);
+const comment = 
+{
+  date  : new Date(),
+  text  : 'I hope you enjoy learning React!',
+  author  : {
+    name  : 'Hello Kitty',
+    avatarUrl : 'https://placekitten.com/g/64/64',
+  },
+};
 
 ReactDOM.render(
-  element,
+  <Comment 
+  date={comment.date}
+  text={comment.text}
+  author={comment.author}
+  />,
   document.getElementById('root')
 );
 
